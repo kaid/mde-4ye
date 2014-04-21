@@ -28,9 +28,18 @@ function image(alt, src) {
 }
 
 window.onload = function() {
-    var editor = ace.edit("4ye-markdown-editor");
-    editor.setTheme("ace/theme/monokai");
+    var id     = "4ye-markdown-editor";
+    var editor = ace.edit(id);
+    var el     = document.getElementById(id);
+    var theme  = el.getAttribute("data-theme") || "github";
+    var input  = document.getElementById("4ye-markdown-content");
+    
+    editor.setTheme("ace/theme/" + theme);
     editor.getSession().setMode("ace/mode/markdown");
+    
+    editor.on("change", function(event) {
+        input.value = editor.getValue();
+    });
     
     editor.container.addEventListener("paste", function(event) {
         var items = (event.clipboardData || event.originalEvent.clipboardData).items
