@@ -11,7 +11,7 @@ module MDE4ye
 
   module Helpers
     def mdeditor(name, content, height=400, theme="github")
-      "<input id=\"4ye-markdown-content\" type=\"hidden\" name=\"#{name}\" value=\"#{content}\" />" +
+      "<textarea id=\"4ye-markdown-content\" name=\"#{name}\" style=\"display:none;\">#{content}</textarea>" +
       "<div style=\"height:#{height}px;\" id=\"4ye-markdown-editor\" data-theme=\"#{theme}\">#{content}</div>" +
       "<script src=\"#{MOUNT_AT}/init.js\"></script>"
     end
