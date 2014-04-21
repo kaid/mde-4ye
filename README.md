@@ -16,11 +16,19 @@ gem "mde-4ye", :github => "kaid/mde-4ye"
 $ bundle
 ```
 
-在Sinatra应用内声明
+在`config.ru`内声明
 
 ```ruby
 require "mde-4ye"
-register MDE4ye
+
+#....
+
+
+YourApp.register MDE4ye
+MDE4ye.mount!(self)
+
+#....
+
 ```
 
 在需要使用的地方调用
