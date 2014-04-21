@@ -36,6 +36,8 @@ window.onload = function() {
     
     editor.setTheme("ace/theme/" + theme);
     editor.getSession().setMode("ace/mode/markdown");
+    editor.setValue(input.value);
+    editor.clearSelection();
     
     editor.on("change", function(event) {
         input.value = editor.getValue();
